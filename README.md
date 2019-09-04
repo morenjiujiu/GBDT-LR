@@ -1,5 +1,6 @@
 # GBDTLR Estimator
-GBDT结合LR的二分类模型，封装成了一个类GBDTLR。scikit-learn风格，可以fit和predict。有run_demo
+GBDT结合LR的二分类模型，封装成了一个类GBDTLR。scikit-learn风格，可以fit和predict。有run_demo。
+GBDTLR这个类中，我只挑选了GBDT的6个参数，LR的2个参数。大家可以根据需要把其他参数补全。
 
 ## 运行环境
 - python3
