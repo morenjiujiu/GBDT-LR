@@ -1,5 +1,5 @@
-# GBDT-LR
-GBDT结合LR的二分类模型，封装成了一个类，和sklearn的使用形式一样，有run_demo
+# GBDTLR Estimator
+GBDT结合LR的二分类模型，封装成了一个类GBDTLR。scikit-learn风格，可以fit和predict。有run_demo
 
 ## 运行环境
 - python3
@@ -16,5 +16,5 @@ GBDT+LR的背景
 - https://www.zhihu.com/question/329131851/answer/727102009 GBDT+LR一定是好用的吗，缺点
 
 创建自定义的estimator，sklearn风格
-- https://scikit-learn.org/stable/developers/contributing.html#rolling-your-own-estimator  sklearn官方给出的your-own-estimator说明
+- https://scikit-learn.org/stable/developers/contributing.html#rolling-your-own-estimator  scikit-learn官方给出的your-own-estimator说明
 - http://danielhnyk.cz/creating-your-own-estimator-scikit-learn/ 国外的一篇博客
