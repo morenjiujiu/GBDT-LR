@@ -52,9 +52,19 @@ class GBDTLR(BaseEstimator, ClassifierMixin):
         y = Y_lr
         return self.LR.fit(X, y)
 
+
+    def predict(self,X):
+        X = self.ENC.transform(self.GBDT.apply(X)[:, :, 0])
+        return self.LR.predict(X)
+
+
     def predict_proba(self, X):
         X = self.ENC.transform(self.GBDT.apply(X)[:, :, 0])
         return self.LR.predict_proba(X)
+
+    def predict_log_proba(self,X):
+        X = self.ENC.transform(self.GBDT.apply(X)[:, :, 0])
+        return self.LR.predict_log_proba(X)
 
 
 if __name__== '__main__':
@@ -71,7 +81,7 @@ if __name__== '__main__':
     # 切分数据集
     X = df.drop(['label'], axis=1)
     Y = df['label']
-    X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3)
+    X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.3,random_state=1234)
     # print(X_train.shape, X_test.shape)
 
 
@@ -105,6 +115,13 @@ if __name__== '__main__':
      [9.73887543e-01 2.61124566e-02]
      [9.39827389e-01 6.01726114e-02]]
     """
-
     roc_auc = metrics.roc_auc_score(np.array(Y_test), np.array(Y_pred_proba)[:,1])
-    print(roc_auc) #0.88
+    print("roc_auc:",roc_auc) #0.93
+
+    Y_pred=model.predict(X_test)
+    acc=metrics.accuracy_score(np.array(Y_test),np.array(Y_pred))
+    print("acc:",acc) #0.87
+
+    Y_pred_log_proba = model.predict_log_proba(X_test)
+    # print(Y_pred_log_proba)
+
